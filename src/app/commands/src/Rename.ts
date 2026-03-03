@@ -18,16 +18,22 @@ export default class Rename extends Command {
 					.setDescription("The new name")
 					.setRequired(true)
 			)
+			.addStringOption(option =>
+				option.setName("lore")
+					.setDescription("Explanation for this rename")
+					.setRequired(true)
+			)
 	}
 
 	override async execute(bot: Bot, interaction: Interaction) {
 		const target = interaction.options.getUser("target", true)
 		const newName = interaction.options.getString("name", true)
+		const lore = interaction.options.getString("lore", true)
 		const channel = interaction.channel
 		if (channel instanceof TextChannel) {
 			const targetMember = await channel.guild.members.fetch(target.id)
 			targetMember.setNickname(newName).then(() => {
-				interaction.reply("Name modified !")
+				interaction.reply(`Name modified ! Lore: ${lore}`)
 			}).catch(() => {
 				interaction.reply("Missing permissions !")
 			})	
