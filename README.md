@@ -1,5 +1,7 @@
 # Motivation is Key, official MonkeyTeam Discord Bot
 
+Deprecated, please use https://github.com/TheMonkeyPrince/R2 instead
+
 # March 2024 update
 
 ## Unparalled monkeys management techniques
